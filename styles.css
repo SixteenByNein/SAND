@@ -1,0 +1,181 @@
+@font-face{
+	font-family: Montserrat;
+	src: url(resources/Montserrat-Updated.ttf);
+}
+
+@font-face{
+	font-family: Montserrat-Bold;
+	src: url(resources/Montserrat-ExtraBold.ttf);
+}
+
+@font-face{
+	font-family: Garamond;
+	src: url(resources/EBGaramond-VariableFont_wght.ttf);
+}
+
+html{
+	
+	font-family: Montserrat, sans-serif;
+	background-color: #000;
+	color: white;
+	
+}
+body{
+	
+	margin: 0;
+	display: grid;
+	grid-template-columns: 1fr;
+	
+}
+
+header{
+	
+	grid-row: 1;
+	
+}
+
+#universalHeader{
+	
+	background-color: #004;
+	border-radius: 0px 0px 10px 10px;
+	text-align: center;
+	font-variant: small-caps;
+	color: #FFF;
+	font-family: Montserrat-Bold;
+	padding: 1px;
+	border-bottom: solid 1px #55A;
+	
+}
+
+h4{
+	
+	line-height: 0px;
+	margin-top: -5px;
+	font-size: 13px;
+	
+}
+
+#topLogo{
+	
+	margin-top: 0px;
+	margin-bottom: 4px;
+	font-size: 50px;
+	letter-spacing: -3px;
+	
+}
+
+#options{
+	
+	margin: 3px 15px 3px 15px;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	text-align: center;
+	margin-bottom: 0;
+	gap: 8px;
+	
+}
+
+.headerOption{
+	
+	border: solid 1px #55A;
+	border-bottom: none;
+	border-radius: 5px 5px 0 0;
+	padding-bottom: 4px;
+	padding-top: 6px;
+	transition: .5s;
+	
+}
+
+a:link{
+	
+	text-decoration: none;
+	color: white;
+	
+}
+
+a:visited{
+	
+	text-decoration: none;
+	color: white;
+	
+}
+
+a:focus{
+	
+	text-decoration: none;
+	color: white;
+	
+}
+
+.headerOption:hover{
+	
+	border: solid 1px #85A;
+	background-color: #85A;
+	letter-spacing: 2px;
+	border-bottom: none;
+	
+}
+
+a:active{
+	
+	text-decoration: none;
+	color: white;
+	
+}
+
+.homepageImage {
+	
+	width: 95vw;
+	margin-bottom: -5px;
+	margin-top: 0px;
+	transition: .5s;
+	
+}
+
+
+.homepageOption {
+	
+	margin: auto;
+	transition: .5s;
+	margin-bottom: 0px;
+	padding-bottom: 0;
+	filter: saturate(0%) sepia(20%) brightness(.7);
+	
+}
+
+.mainBody{
+	
+	margin: auto;
+	margin-top: 0;
+	
+}
+
+.homepageImageLabel{
+	
+	font-family: Montserrat-Bold;
+	font-variant: small-caps;
+	position: absolute;
+	text-align: center;
+	float: center;
+	margin-top: -10%;
+	width: 100%;
+	
+}
+
+.homepageImage:hover{
+	
+	transition: .5s;
+
+	
+}
+
+.homepageOption:hover{
+	
+	transition: .5s;
+	padding-bottom: 8px;
+	padding-top: 8px;
+	transition: .5s;
+	letter-spacing: 2px;
+	filter: saturate(100%);
+	
+}
