@@ -1,16 +1,16 @@
 @font-face{
 	font-family: Montserrat;
-	src: url(resources/Montserrat-Updated.ttf);
+	src: url(/resources/Montserrat-Updated.ttf);
 }
 
 @font-face{
 	font-family: Montserrat-Bold;
-	src: url(resources/Montserrat-ExtraBold.ttf);
+	src: url(/resources/Montserrat-ExtraBold.ttf);
 }
 
 @font-face{
 	font-family: Garamond;
-	src: url(resources/EBGaramond-VariableFont_wght.ttf);
+	src: url(/resources/EBGaramond-VariableFont_wght.ttf);
 }
 
 html{
