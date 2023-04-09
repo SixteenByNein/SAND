@@ -1,5 +1,5 @@
 {
-  description = "Build system for the SAND RPG system";
+  description = "Build system for the Sand RPG";
 
   inputs = {
     devshell.url = "github:numtide/devshell";
