@@ -1,0 +1,84 @@
+# Character Creation Guide
+
+The following is a quick guide to filling out your character sheet. For more information on what a given value will do, consult The Sand Rulebook.
+
+## Character Bio
+
+### Name
+
+The character's name goes here.
+
+### Class
+
+A character's class is picked from a list of available classes. Such a list will come from any modules you may be using.
+
+Among other things such as skill bonuses, a class also comes with one of three *expertise types*: *mental*, *physical*, and *social*. This allows the character to develop expertises of the matching type quicker than they otherwise would be able to.
+
+### Level
+
+Levels start at zero. If your campaign starts at a higher level than zero, be sure to adjust your character's skills and expertises accordingly.
+
+## Traits
+
+In Sand, the following are categorized as *traits*: Charm, Presence, Inteligence, Wisdom, Strength, Dexterity, and Willpower. (Those ones up at the top of your character sheet.)
+
+These are used to determine other information about your character such as skills, defence, health, etc. A character's class should be taken into account when considering the values of each trait.
+
+To determine a character's traits, ten points are divided as desired between the seven traits with no trait exceeding four.
+
+## Skills
+
+Skills are a sum of the two traits listed in next to the skill on the character sheet.
+
+For example: *toughness* is the sum of *strength* and *willpower* (*strength* + *willpower*) so if your character's strength is three and their willpower two, their toughness will be five.
+
+For any skill in which a character's class has a proficiency, add one plus one for every three levels the character reaches. (1 + *level* / 3 rounded down)
+
+## Defence
+
+A character's defence is a *dexterity*/*willpower* sum plus ten. (*dexterity* + *willpower* + 10)
+
+This value determines if an attack against your character lands or not.
+
+## Speed
+
+A character's speed is four times their *athleticism* modifier. (4 * *athleticism*)
+
+This value is the distance in meters the character travels in one combat turn or six seconds.
+
+## Initiative
+
+Initiative is a *wisdom*/*dexterity* sum. (*wisdom* + *dexterity*)
+
+This value is used to determine the turn order in combat.
+
+## Hitpoints
+
+A character's hitpoints are their toughness modifier multiplied by five and added to ten. (5 * *toughness* + 10)
+
+## Inventory
+
+A character's starting inventory is determined by their class.
+
+## Description
+
+This is the place for any noteworthy information about the character such as physical appearence, species -- if not human , and any abillities not included elsewhere in the character sheet. 
+
+## Expertises
+
+Depending on your choice of class, you will recieve different types and different amounts of expertises. These will give you a bonus on attempts at an action involving the expertise in question.
+
+Expertises are gained through enough successful attempts at such an action as well as any other requirement that may be assiciated with it.
+
+If your character begins the campaign at a higher level than zero, for every level above zero they are, add an expertise of your choice, half of which being in your character's expertise type. If your level is an odd number, round this amount up.
+
+For more information on expertises, see The Sand Rulebook under "Expertises".
+
+## Experience Points
+
+Experience points are gained for every successful attempt at an expertise and are marked on the character sheet in a bubble next to the expertise.
+
+## Leveling Up
+
+For every three experience points a character gains wether or not the experience point in question is for an expterise of the character's expertise type or not or if the experience the experience points all went to the same expertise.
+
