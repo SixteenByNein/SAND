@@ -2,7 +2,37 @@
 
 ## General Tabletop RPG Basics
 
+*If you're already familiar with other TTRPGs, feel free to skip this section*
+
+### The Objective
+
+The objective of the game will vary depending on the campaign and the desires of the players or game master. The point of a game of Sand is first and foremost to tell a story and to have fun.
+
+### The Game Master
+
+### Non-turn-based Play
+
+### Dice
+
+Sand uses the same set of dice used in most other tabletop RPGs. As with other RPGs, a given die is referred to by the letter *d* followed by its number of sides.
+
+Dice used in Sand are the following:
+
+- d4
+
+- d6
+
+- d8
+
+- two d10s (one zero through nine, the other zero through ninety by tens. These can be combined to count as a d100)
+
+- d12
+
+- d20
+
 ## Units of Measurement
+
+Sand uses the metric system for its units with distance measured in meters, mass in kilograms, temprature measured in degrees celcius, time measured in seconds, etc. with larger or smaller units based on these units also allowable such as the centimeter, the gram, the kilometer, or the minute.
 
 ## Modules
 
@@ -28,9 +58,25 @@
 
 ## Objects
 
+All objects will described with the following properties:
+
+- Mass - in kilograms
+- Volume - in cubic meters
+- Footprint - length, width, and height measured in meters
+- Material - a list of all materials of which the item is made
+- Description - additional information about the object
+
 ### Weapons
 
+In addition to the previously mentioned properties, weapons also include the following properties:
+
+- 
+
 #### Improvised Weapons
+
+##### Improvised Melee Weapons
+
+##### Improvised Ranged Weapons
 
 ## Status Effects
 
