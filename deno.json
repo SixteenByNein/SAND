@@ -1,0 +1,10 @@
+{
+  "imports": {
+    "djot": "npm:/@djot/djot@0.2.2",
+    "rad/": "https://deno.land/x/rad@v6.9.1/src/",
+    "std/": "https://deno.land/std@0.183.0/"
+  },
+  "tasks": {
+    "build": "deno run -c deno.json -A https://deno.land/x/rad@v6.9.1/src/bin.ts build"
+  }
+}
