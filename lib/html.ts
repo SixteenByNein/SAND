@@ -2,24 +2,51 @@ import type { Element, HTMLDocument } from "deno_dom";
 import ts from "typescript";
 
 export class FilterScript {
-  constructor(readonly element: Element) { }
+  constructor(readonly element: Element, readonly parentFilename: string) { }
 
-  get sourceText(): string {
-    return this.element.textContent;
+  async sourceText(): Promise<string> {
+    const src = this.element.getAttribute("src");
+    if (src != undefined) {
+      const resolved = resolveRawImportToFile(src);
+      if (resolved == null) {
+        throw new Error(`unresolved import: ${src}`);
+      }
+      return await Deno.readTextFile(resolved);
+    } else {
+      return this.element.textContent;
+    }
+  }
+
+  get filename(): string {
+    const src = this.element.getAttribute("src");
+    if (src != undefined) {
+      const resolved = resolveRawImportToFile(src);
+      if (resolved == null) {
+        throw new Error(`unresolved import: ${src}`);
+      }
+      return resolved;
+    } else {
+      return this.parentFilename;
+    }
   }
 
   async run(doc: HTMLDocument): Promise<HTMLDocument> {
     let module: Record<string, unknown>;
-    let type = this.element.getAttribute("type") ?? "text/javascript";
-    if (type === "module") {
-      type = "text/javascript";
-    }
-    const blob = new Blob([this.element.textContent], { type });
-    const url = URL.createObjectURL(blob);
-    try {
-      module = await import(url);
-    } finally {
-      URL.revokeObjectURL(url);
+    const src = this.element.getAttribute("src");
+    if (src != undefined) {
+      module = await import(src);
+    } else {
+      let type = this.element.getAttribute("type") ?? "text/javascript";
+      if (type === "module") {
+        type = "text/javascript";
+      }
+      const blob = new Blob([this.element.textContent], { type });
+      const url = URL.createObjectURL(blob);
+      try {
+        module = await import(url);
+      } finally {
+        URL.revokeObjectURL(url);
+      }
     }
     if (!(module.default instanceof Function)) {
       throw new Error(`expected filter module to have a function as its default export, not ${typeof module.default}`);
@@ -47,7 +74,7 @@ export class FilterScript {
 }
 
 const filterRegex = /^module|(text\/javascript|application\/typescript)(,.*)?$/;
-export function findFilterScripts(doc: HTMLDocument): FilterScript[] {
+export function findFilterScripts(doc: HTMLDocument, filename: string): FilterScript[] {
   return ([...doc.querySelectorAll("script")] as Element[])
     .filter(n => {
       if (!n.hasAttribute("data-filter")) {
@@ -59,7 +86,7 @@ export function findFilterScripts(doc: HTMLDocument): FilterScript[] {
       }
       return true;
     })
-    .map(n => new FilterScript(n));
+    .map(n => new FilterScript(n, filename));
 }
 
 
@@ -87,9 +114,9 @@ function collectImports(src: ts.SourceFile, imports: Set<string>): void {
   walk(src);
 }
 
-export function filterDeps(filter: FilterScript, imports: Set<string>): void {
+export async function filterDeps(filter: FilterScript, imports: Set<string>): Promise<void> {
   const rawImports = new Set<string>();
-  const src = ts.createSourceFile("filter.ts", filter.sourceText, ts.ScriptTarget.ESNext, true);
+  const src = ts.createSourceFile(filter.filename, await filter.sourceText(), ts.ScriptTarget.ESNext, true);
   collectImports(src, rawImports);
   findFileImports(rawImports, imports);
 }
@@ -106,17 +133,24 @@ export async function scriptFileDeps(path: string): Promise<Set<string>> {
 
 function findFileImports(rawImports: Set<string>, fileImports: Set<string>): void {
   for (const raw of rawImports) {
-    let url: URL;
-    try {
-      url = new URL(import.meta.resolve(raw));
-    } catch (_) {
-      continue;
+    const resolved = resolveRawImportToFile(raw);
+    if (resolved != null) {
+      fileImports.add(resolved);
     }
-    if (url.protocol !== "file:") {
-      continue;
-    }
-    fileImports.add(url.pathname);
   }
+}
+
+function resolveRawImportToFile(raw: string): string | null {
+  let url: URL;
+  try {
+    url = new URL(import.meta.resolve(raw));
+  } catch (_) {
+    return null;
+  }
+  if (url.protocol !== "file:") {
+    return null;
+  }
+  return url.pathname;
 }
 
 export async function applyFilters(doc: HTMLDocument, filters: FilterScript[]): Promise<HTMLDocument> {

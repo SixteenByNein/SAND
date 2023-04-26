@@ -51,7 +51,7 @@ const build: Task = {
       if (doc == null) {
         throw new Error(`failed to parse HTML in ${path}`);
       }
-      const filters = findFilterScripts(doc);
+      const filters = findFilterScripts(doc, path);
       result = { doc, filters };
       parseCache.set(path, result);
       return result;
@@ -68,7 +68,7 @@ const build: Task = {
           const imports = new Set<string>();
           const { filters } = await parsePage(path);
           for (const filter of filters) {
-            filterDeps(filter, imports);
+            await filterDeps(filter, imports);
           }
           return imports;
         } else {
