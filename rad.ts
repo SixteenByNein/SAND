@@ -6,6 +6,7 @@ import { dirname, join } from "std/path/mod.ts";
 import { applyFilters, findFilterScripts } from "./lib/html.ts";
 
 const BUILD_DIR = "build";
+const DIST_DIR = join(BUILD_DIR, "dist");
 
 const buildDir = {
   fn() {
@@ -13,10 +14,17 @@ const buildDir = {
   }
 };
 
-const build: Task = {
+const distDir = {
+  fn() {
+    Deno.mkdir(DIST_DIR, { recursive: true });
+  },
   dependsOn: [buildDir],
+};
+
+const build: Task = {
+  dependsOn: [distDir],
   prereqs: ["src/pages/**/*.dj"],
-  mapPrereqToTarget: ({ reroot }) => reroot(join("src", "pages"), "build", "dj", "html"),
+  mapPrereqToTarget: ({ reroot }) => reroot(join("src", "pages"), DIST_DIR, "dj", "html"),
   async onMake(_env, { changedPrereqs, getTarget }) {
     const parser = new DOMParser();
     for await (const req of changedPrereqs) {
@@ -40,4 +48,5 @@ const build: Task = {
 export const tasks: Tasks = {
   build,
   buildDir,
+  distDir,
 };
