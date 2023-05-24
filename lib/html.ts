@@ -24,7 +24,21 @@ export class FilterScript {
     if (!(module.default instanceof Function)) {
       throw new Error(`expected filter module to have a function as its default export, not ${typeof module.default}`);
     }
-    return module.default(doc) ?? doc;
+
+    // Document has to be available as global for JSX.
+    const window = (globalThis as typeof globalThis & { document?: unknown });
+    const hadDocument = "document" in window;
+    const oldDocument = window.document;
+    window.document = doc;
+    try {
+      return module.default(doc) ?? doc;
+    } finally {
+      if (hadDocument) {
+        window.document = oldDocument;
+      } else {
+        delete window.document;
+      }
+    }
   }
 
   get externalSrc(): string | null {
