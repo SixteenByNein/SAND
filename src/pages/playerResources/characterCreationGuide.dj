@@ -1,4 +1,9 @@
-# Character Creation Guide
+```=html
+<script data-filter>
+import standard from "lib/filters/standard.tsx";
+export default standard({ title: "Character Creation Guide" });
+</script>
+```
 
 The following is a quick guide to filling out your character sheet. For more information on what a given value will do, consult The Sand Rulebook.
 

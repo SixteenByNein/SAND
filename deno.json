@@ -8,6 +8,7 @@
     "djot": "npm:/@djot/djot@0.2.2",
     "fp-ts/": "npm:/fp-ts@2.15.0/lib/",
     "io-ts": "npm:/io-ts@2.2.20",
+    "lib/": "./lib/",
     "lib/jsx-runtime": "./lib/jsx-runtime.ts",
     "rad/": "https://deno.land/x/rad@v6.9.1/src/",
     "std/": "https://deno.land/std@0.183.0/",
