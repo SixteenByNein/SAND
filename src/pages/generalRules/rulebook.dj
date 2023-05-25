@@ -1,2 +1,6 @@
-# The Sand Rulebook
-
+```=html
+<script data-filter>
+import standard from "lib/filters/standard.tsx";
+export default standard({ title: "The Sand Rulebook" });
+</script>
+```
