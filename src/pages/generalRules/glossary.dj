@@ -1,0 +1,6 @@
+```=html
+<script data-filter>
+import standard from "lib/filters/standard.tsx";
+export default standard({ title: "Glossary" });
+</script>
+```
