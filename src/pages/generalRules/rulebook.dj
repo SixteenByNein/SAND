@@ -4,3 +4,140 @@ import standard from "lib/filters/standard.tsx";
 export default standard({ title: "The Sand Rulebook" });
 </script>
 ```
+# The Sand Rulebook
+
+## General Tabletop RPG Basics
+
+*If you're already familiar with other TTRPGs, feel free to skip this section*
+
+### The Objective
+
+The objective of the game will vary depending on the campaign and the desires of the players or game master. The point of a game of Sand is first and foremost to tell a story and to have fun.
+
+### The Game Master
+
+### Non-turn-based Play
+
+### Dice
+
+Sand uses the same set of dice used in most other tabletop RPGs. As with other RPGs, a given die is referred to by the letter *d* followed by its number of faces.
+
+Dice used in Sand are the following:
+
+- d4
+
+- d6
+
+- d8
+
+- two d10s (one zero through nine, the other zero through ninety by tens. These can be combined to count as a d100)
+
+- d12
+
+- d20
+
+### Rolls with advantage or disadvantage
+
+A roll with advantage means that the die is rolled twice with the higher of the two rolls being used. Simmilarly, a roll with disadvantage means that the die is rolled twice but the lower of the two rolls is used.
+
+If a character has both reason to roll with advantage and reason to roll with disadvantage, the two cancel each other out leaving the character with just a standard roll.
+
+## Units of Measurement
+
+Sand uses the metric system for its units with distance measured in meters, mass in kilograms, temprature measured in degrees celcius, time measured in seconds, etc. with larger or smaller units based on these units also allowable such as the centimeter, the gram, the kilometer, or the minute.
+
+## Modules
+
+Modules add content to Sand. Aside from this main rulebook and a handfull of other resources, all content in Sand will come from modules. Modules can add anything from new classes, items, and expertises to new rules.
+
+A module may include a header that tells if another module is included. If so, when playing with such a module, all modules listed as included are also to be used.
+
+## Skill Checks
+
+To attempt an action that is sufficiently difficult, a skill check must be made. A skill check is a d20 plus the associated skill modifier plus a d4 for any relevant expertise. Depending on the difficulty of the action, the game master will set a threshold for success.
+
+### Contested Skill Checks
+
+If one character attempts a skill check against another character which the recipient would like to resist, an appropriate skill check is made by both parties and the higher of the two wins.
+
+## Expertise
+
+Expertises give a character a bonus to relevant skill checks. In many instances, an expertise may also give a character abilities.
+
+### Using an Expertise
+
+
+
+### Gaining an Exptertise
+
+
+
+## Character Movement
+
+
+
+### Terrain
+
+
+
+## Dealing and Recieving Damage
+
+
+
+### Damage Types
+
+
+
+### Character Deaths
+
+
+
+## Objects
+
+All objects will described with the following properties:
+
+- Mass - in kilograms
+- Volume - in cubic meters
+- Footprint - length, width, and height measured in meters
+- Material - a list of all materials of which the item is made
+- Description - additional information about the object
+
+### Weapons
+
+In addition to the previously mentioned properties, weapons also include the following properties:
+
+- Ranged/melee
+- Damage type - stabbing, slashing, bludgeoning, burning, poison, among others as added by the module
+- One-handed/two-handed/heavy opperation
+- Power
+- Precision
+
+Additionally, ranged weapons also have the followning properties:
+
+- Absolute range - in meters (the furthest distance a ranged weapon is able to reach)
+- Practical range - in meters (the distance at which one must roll with disadvantage to hit)
+
+#### Improvised Weapons
+
+Any item that is not listed as a weapon but is being used as such opperates under the following rules.
+
+Ranged/melee use and damage type depend on the use case. 
+
+##### Improvised Melee Weapons
+
+
+
+##### Improvised Ranged Weapons
+
+
+
+## Status Effects
+
+
+
+## Combat
+
+
+
+### Turn Order
+
