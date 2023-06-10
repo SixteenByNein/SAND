@@ -31,8 +31,20 @@ const depsDir = {
   dependsOn: [buildDir],
 };
 
+const copyStyles: Task = {
+  prereqs: ["src/styles/**/*.css"],
+  mapPrereqToTarget: ({ reroot }) => reroot("src", DIST_DIR, "css", "css"),
+  async onMake(_env, { changedPrereqs, getTarget }) {
+    for await (const prereq of changedPrereqs) {
+      const target = getTarget!(prereq);
+      await Deno.mkdir(dirname(target), { recursive: true });
+      await Deno.copyFile(prereq.path, target);
+    }
+  },
+};
+
 const build: Task = {
-  dependsOn: [depsDir, distDir],
+  dependsOn: [copyStyles, depsDir, distDir],
   prereqs: ["src/pages/**/*.dj"],
   mapPrereqToTarget: ({ reroot }) => reroot(join("src", "pages"), DIST_DIR, "dj", "html"),
   async onMake(_env, { changedPrereqs, getTarget, prereqs }) {
@@ -117,4 +129,5 @@ export const tasks: Tasks = {
   buildDir,
   depsDir,
   distDir,
+  copyStyles,
 };
