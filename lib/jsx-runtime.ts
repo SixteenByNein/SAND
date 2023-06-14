@@ -1,4 +1,4 @@
-import { HTMLDocument, Node } from "deno_dom";
+import { Element, HTMLDocument, Node } from "deno_dom";
 
 declare global {
   namespace JSX {
@@ -32,16 +32,20 @@ export function jsx(
 ): Node
 {
   const doc = (globalThis as unknown as { document: HTMLDocument }).document;
-  let element: Node;
+  let element: Element;
   if (typeof type === "string") {
     element = doc.createElement(type);
-    if (props?.children != undefined) {
-      if (typeof props.children === "object" && Symbol.iterator in props.children) {
-        for (const child of props.children) {
-          element.appendChild(toNode(child, doc));
+    for (const prop in props) {
+      if (prop === "children") {
+        if (typeof props.children === "object" && Symbol.iterator in props.children) {
+          for (const child of props.children) {
+            element.appendChild(toNode(child, doc));
+          }
+        } else {
+          element.appendChild(toNode(props.children!, doc));
         }
       } else {
-        element.appendChild(toNode(props.children, doc));
+        element.setAttribute(prop, props[prop]);
       }
     }
     return element;
