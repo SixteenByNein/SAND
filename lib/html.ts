@@ -1,4 +1,5 @@
 import type { Element, HTMLDocument } from "deno_dom";
+import { fromFileUrl } from "std/path/mod.ts";
 import ts from "typescript";
 
 export class FilterScript {
@@ -150,7 +151,7 @@ function resolveRawImportToFile(raw: string): string | null {
   if (url.protocol !== "file:") {
     return null;
   }
-  return url.pathname;
+  return fromFileUrl(url);
 }
 
 export async function applyFilters(doc: HTMLDocument, filters: FilterScript[]): Promise<HTMLDocument> {
