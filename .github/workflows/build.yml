@@ -1,0 +1,38 @@
+name: build
+run-name: Build
+on: [push]
+env:
+  DENO_VERSION: 1.34.3
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Cache Deno Executable
+      id: cache-deno-exe
+      uses: actions/cache@v3
+      with:
+        path: ~/.deno
+        key: ${{ runner.os }}-deno-exe-${{ env.DENO_VERSION }}
+    - name: Install Deno
+      if: steps.cache-deno-exe.outputs.cache-hit != 'true'
+      run: curl -fsSL https://deno.land/install.sh | sh -s v${{ env.DENO_VERSION }}
+    - name: Restore Cached Deno Build Dependencies
+      id: restore-deno-deps
+      uses: actions/cache/restore@v3
+      with:
+        path: ~/.cache/deno
+        key: ${{ runner.os }}-deno-deps-${{ hashFiles('deno.lock') }}
+    - name: Build
+      run: ~/.deno/bin/deno task build
+    - name: Cache Deno Build Dependencies
+      uses: actions/cache/save@v3
+      if: steps.restore-deno-deps.outputs.cache-hit != 'true'
+      with:
+        path: ~/.cache/deno
+        key: ${{ runner.os }}-deno-deps-${{ hashFiles('deno.lock') }}
+    - name: Archive Build
+      uses: actions/upload-artifact@v3
+      with:
+        name: dist
+        path: build/dist
